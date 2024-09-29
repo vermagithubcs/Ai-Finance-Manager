@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-
+// Define User Schema
 const UserSchema = new mongoose.Schema({
     name: {
         type: String,
@@ -15,13 +15,46 @@ const UserSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    data: {
-        // Array of objects
-        type: Array,
-        default: []
-    }
+    transactions: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Transaction' 
+        }
+    ],
+    expenses: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'RecurringExpense'
+        }
+    ],
+    budgets: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Budget'  // This will reference the Budget model
+        }
+    ],
+    goals: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Goal'  // This will reference the Goal model
+        }
+    ],
+    // Optional profile fields
+    profilePic: {
+        type: String, // Can be a URL to a profile image
+        default: ''
+    },
+    phoneNumber: {
+        type: String,
+        default: ''
+    },
+    address: {
+        type: String,
+        default: ''
+    },
 }, { timestamps: true });
 
+// Create User Model
 const User = mongoose.model('User', UserSchema);
 
 module.exports = User;

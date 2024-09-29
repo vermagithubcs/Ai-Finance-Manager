@@ -11,6 +11,8 @@ const router = require("./routes/router");
 // DB
 const connectDB = require("./config/DB");
 connectDB();
+const User = require("./models/UserModel");
+const Budget = require("./models/BudgetModel");
 
 // Middleware
 app.use(express.json());
@@ -22,8 +24,17 @@ app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
 
 // Routes
-app.get("/", (req, res) => {
-  res.send("API is Working...");
+app.get("/", async (req, res) => {
+  try {
+    const data = await User.find()
+    res.render('index', {data})
+  } catch (error) {
+    return res.status(500).json({
+      message: error || error.message,
+      error: true
+    })
+  }
+  
 });
 
 // api routes
