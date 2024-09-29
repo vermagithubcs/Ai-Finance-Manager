@@ -70,6 +70,20 @@
         http://localhost:3000/api/transactions/:userId
 
     
+    <!-- Goal Field -->
+
+    # Add New goal
+        http://localhost:3000/api/savings-goals
+
+        #sampleGoalData : At Post
+        {
+            "userId" : "(pasteId here)",
+            "goalName" : "Cycle Buy",
+            "targetAmount" : "25000",
+            "deadline" : 2024-10-30
+        }
+
     
+
 
     

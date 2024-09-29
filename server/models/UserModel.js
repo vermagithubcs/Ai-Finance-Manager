@@ -27,16 +27,16 @@ const UserSchema = new mongoose.Schema({
             ref: 'RecurringExpense'
         }
     ],
+    Incomes: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Income'
+        }
+    ],
     budgets: [
         {
             type: mongoose.Schema.Types.ObjectId,
             ref: 'Budget'  // This will reference the Budget model
-        }
-    ],
-    goals: [
-        {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: 'Goal'  // This will reference the Goal model
         }
     ],
     // Optional profile fields
