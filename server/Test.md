@@ -1,8 +1,8 @@
 ## Run Server: npm run dev
 
+
+
 ## Api Endpoints:
-
-
     # Create User
         http://localhost:3000/api/register
 
