@@ -1,4 +1,3 @@
-// controllers/IncomeController.js
 const Income = require('../models/IncomeModel');
 const User = require('../models/UserModel');
 
@@ -6,13 +5,15 @@ const User = require('../models/UserModel');
 const createIncome = async (req, res) => {
     const { userId, source, amount, description } = req.body;
     try {
-        const income = await Income.create({ userId, source, amount, description });
-
+        // Check if the user exists
         const user = await User.findById(userId);
         if (!user) {
             return res.status(404).json({ error: "User not found" });
         }
-        user.incomes.push(income._id);
+
+        // Create the income record
+        const income = await Income.create({ userId, source, amount, description });
+        user.incomes.push(income._id); // Assuming `incomes` field exists in User model
         await user.save();
 
         res.status(201).json({ message: "Income created successfully", income });
@@ -60,6 +61,12 @@ const deleteIncome = async (req, res) => {
         if (!income) {
             return res.status(404).json({ error: "Income not found" });
         }
+
+        // Remove the income reference from the user
+        await User.updateOne(
+            { _id: income.userId },
+            { $pull: { incomes: id } } // Assuming `incomes` is an array in the User model
+        );
 
         res.status(200).json({ message: "Income deleted successfully" });
     } catch (error) {
