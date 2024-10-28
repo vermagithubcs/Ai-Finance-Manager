@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Profile</title>
+    <link rel="stylesheet" href="../dist/output.css">
+</head>
+<body>
+    <div class="h-screen w-screen bg-[#E2E8F0] flex items-center justify-center">
+        <div class="edit w-[600px] h-[650px] bg-[#fff] rounded-20px">
+            <div class="w-[598px] h-[73px] bg-[#F4F4F4] rounded-t-20px flex items-center justify-center">
+                <h1 class="font-normal text-[32px] text-[#0065DC]">Edit Profile</h1>
+            </div>
+            <div class="h-[570px] flex flex-col items-center justify-evenly">
+                <div class="image h-[100px] w-[100px] border border-black rounded-50%"></div>
+                <div>
+                    <form>
+                        <label for="name">Display Name:</label>
+                        <br>
+                        <input class="border border-black w-[415px] h-[40px] p-2 relative top-2" type="name" placeholder="Enter name here" required>
+                    </form>
+                    <br>
+                    <form>
+                        <label for="name">Phone No.</label>
+                        <br>
+                        <input class="border border-black w-[415px] h-[40px] p-2 relative top-2" type="name" placeholder="Enter name here" required>
+                    </form>
+                    <br>
+                    <form>
+                        <label for="message">Address</label>
+                        <br>
+                        <textarea class="border border-black p-2 rounded-8px w-[415px] relative top-2" name="message" id="message" rows="5" cols="50"></textarea><br>
+                    </form>
+                    <br>
+                </div>
+                <div>
+                    <button class="bg-[#0065DC] text-[#fff] w-[225px] h-[61px] rounded-50px">Complete</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
